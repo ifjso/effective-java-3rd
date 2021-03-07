@@ -31,4 +31,8 @@ public class NyPizza extends Pizza {
     super(builder);
     size = builder.size;
   }
+
+  public Size getSize() {
+    return size;
+  }
 }

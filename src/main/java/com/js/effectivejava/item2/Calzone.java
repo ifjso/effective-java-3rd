@@ -28,4 +28,8 @@ public class Calzone extends Pizza {
     super(builder);
     sauceInside = builder.sauceInside;
   }
+
+  public boolean isSauceInside() {
+    return sauceInside;
+  }
 }
