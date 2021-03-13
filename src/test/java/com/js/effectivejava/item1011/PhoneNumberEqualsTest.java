@@ -1,4 +1,4 @@
-package com.js.effectivejava.item10;
+package com.js.effectivejava.item1011;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,11 +9,12 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PhoneNumberTest {
+@DisplayName("PhoneNumber equals, hashCode 검증")
+public class PhoneNumberEqualsTest {
 
     private static final PhoneNumber BASE_PHONE_NUMBER = createPhoneNumber(100, 100, 100);
 
-    private static Stream<Arguments> providePhoneNumbersAndExpected() {
+    private static Stream<Arguments> providePhoneNumbersAndExpectedForEquals() {
         return Stream.of(
                 Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithAreaCode(100), true),
                 Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithPrefix(100), true),
@@ -24,24 +25,32 @@ public class PhoneNumberTest {
         );
     }
 
-    private static PhoneNumber createPhoneNumberWithAreaCode(int areaCode) {
+    private static Stream<Arguments> providePhoneNumbersAndExpectedForHashCode() {
+        return Stream.of(
+                Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithAreaCode(100), true),
+                Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithPrefix(100), true),
+                Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithLineNum(100), true)
+        );
+    }
+
+    public static PhoneNumber createPhoneNumberWithAreaCode(int areaCode) {
         return createPhoneNumber(areaCode, 100, 100);
     }
 
-    private static PhoneNumber createPhoneNumberWithPrefix(int prefix) {
+    public static PhoneNumber createPhoneNumberWithPrefix(int prefix) {
         return createPhoneNumber(100, prefix, 100);
     }
 
-    private static PhoneNumber createPhoneNumberWithLineNum(int lineNum) {
+    public static PhoneNumber createPhoneNumberWithLineNum(int lineNum) {
         return createPhoneNumber(100, 100, lineNum);
     }
 
-    private static PhoneNumber createPhoneNumber(int areaCode, int prefix, int lineNum) {
+    public static PhoneNumber createPhoneNumber(int areaCode, int prefix, int lineNum) {
         return new PhoneNumber(areaCode, prefix, lineNum);
     }
 
     @ParameterizedTest
-    @MethodSource("providePhoneNumbersAndExpected")
+    @MethodSource("providePhoneNumbersAndExpectedForEquals")
     @DisplayName("모든 필드 값이 서로 같아야 동치이다.")
     void test_equals(PhoneNumber pnOne, PhoneNumber pnTwo, boolean expected) {
         boolean actualOne = pnOne.equals(pnTwo);
@@ -49,5 +58,14 @@ public class PhoneNumberTest {
 
         assertThat(actualOne).isEqualTo(expected);
         assertThat(actualTwo).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("providePhoneNumbersAndExpectedForHashCode")
+    @DisplayName("모든 필드 값이 서로 같다면 해시코드도 같다.")
+    void test(PhoneNumber pnOne, PhoneNumber pnTwo, boolean expected) {
+        boolean actual = pnOne.hashCode() == pnTwo.hashCode();
+
+        assertThat(actual).isEqualTo(expected);
     }
 }
