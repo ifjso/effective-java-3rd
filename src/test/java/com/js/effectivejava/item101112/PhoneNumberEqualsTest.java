@@ -1,4 +1,4 @@
-package com.js.effectivejava.item1011;
+package com.js.effectivejava.item101112;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,16 +12,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("PhoneNumber equals, hashCode 검증")
 public class PhoneNumberEqualsTest {
 
-    private static final PhoneNumber BASE_PHONE_NUMBER = createPhoneNumber(100, 100, 100);
+    private static final PhoneNumber BASE_PHONE_NUMBER = createPhoneNumber(100, 100, 1000);
 
     private static Stream<Arguments> providePhoneNumbersAndExpectedForEquals() {
         return Stream.of(
                 Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithAreaCode(100), true),
                 Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithPrefix(100), true),
-                Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithLineNum(100), true),
+                Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithLineNum(1000), true),
                 Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithAreaCode(200), false),
                 Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithPrefix(200), false),
-                Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithLineNum(200), false)
+                Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithLineNum(2000), false)
         );
     }
 
@@ -29,16 +29,16 @@ public class PhoneNumberEqualsTest {
         return Stream.of(
                 Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithAreaCode(100), true),
                 Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithPrefix(100), true),
-                Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithLineNum(100), true)
+                Arguments.of(BASE_PHONE_NUMBER, createPhoneNumberWithLineNum(1000), true)
         );
     }
 
     public static PhoneNumber createPhoneNumberWithAreaCode(int areaCode) {
-        return createPhoneNumber(areaCode, 100, 100);
+        return createPhoneNumber(areaCode, 100, 1000);
     }
 
     public static PhoneNumber createPhoneNumberWithPrefix(int prefix) {
-        return createPhoneNumber(100, prefix, 100);
+        return createPhoneNumber(100, prefix, 1000);
     }
 
     public static PhoneNumber createPhoneNumberWithLineNum(int lineNum) {
