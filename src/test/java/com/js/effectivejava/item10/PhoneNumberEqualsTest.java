@@ -1,4 +1,4 @@
-package com.js.effectivejava.item101112;
+package com.js.effectivejava.item10;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

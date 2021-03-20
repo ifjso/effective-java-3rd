@@ -1,4 +1,4 @@
-package com.js.effectivejava.item101112;
+package com.js.effectivejava.item10;
 
 public final class PhoneNumber {
     private final short areaCode;
