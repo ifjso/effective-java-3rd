@@ -1,10 +1,10 @@
-package com.js.effectivejava.item2;
+package com.js.effectivejava.item02;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.js.effectivejava.item2.NyPizza.Builder;
-import com.js.effectivejava.item2.NyPizza.Size;
-import com.js.effectivejava.item2.Pizza.Topping;
+import com.js.effectivejava.item02.NyPizza.Builder;
+import com.js.effectivejava.item02.NyPizza.Size;
+import com.js.effectivejava.item02.Pizza.Topping;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

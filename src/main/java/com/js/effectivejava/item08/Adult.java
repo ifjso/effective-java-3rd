@@ -1,4 +1,4 @@
-package com.js.effectivejava.item8;
+package com.js.effectivejava.item08;
 
 public class Adult {
     public static void main(String[] args) {

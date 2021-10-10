@@ -1,4 +1,4 @@
-package com.js.effectivejava.item2;
+package com.js.effectivejava.item02;
 
 public class Calzone extends Pizza {
 

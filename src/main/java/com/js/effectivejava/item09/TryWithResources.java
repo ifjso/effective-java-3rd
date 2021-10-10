@@ -1,4 +1,4 @@
-package com.js.effectivejava.item9;
+package com.js.effectivejava.item09;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

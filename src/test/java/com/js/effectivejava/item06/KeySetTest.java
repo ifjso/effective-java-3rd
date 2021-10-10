@@ -1,4 +1,4 @@
-package com.js.effectivejava.item6;
+package com.js.effectivejava.item06;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
