@@ -1,11 +1,12 @@
 package com.js.effectivejava.item47;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 import java.util.Set;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class PowerSetTest {
 
@@ -20,7 +21,7 @@ class PowerSetTest {
 
         // then
         assertThat(actual).hasSize(8);
-        assertThat(actual).containsExactly(
+        assertThat(actual).containsOnly(
             Set.of(),
             Set.of("a"),
             Set.of("b"),
